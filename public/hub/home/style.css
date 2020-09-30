@@ -1,0 +1,164 @@
+:root {
+    --primary: rgb(1, 55, 80);
+    --secondary: rgb(30, 160, 47);
+    --tertiary: rgb(242, 62, 2);
+    --dark: rgb(30, 30, 30);
+    --light: rgb(255, 255, 255);
+}
+
+* {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font: 30px sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.fade-out {
+    animation: fade-out 1.5s;
+    opacity: 0;
+    transform: scale(1.25, 1.25);
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.25, 1.25);
+    }
+}
+
+.fade-in {
+    animation: fade-in 1.5s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.8, 0.8);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all ease 0.2s;
+}
+
+.a-primary:hover {
+    color: var(--primary);
+    opacity: 1;
+    transform: scale(1.25, 1.25);
+    font-size: 1.3rem;
+}
+
+.a-secondary:hover {
+    color: var(--secondary);
+    opacity: 1;
+    transform: scale(1.25, 1.25);
+    font-size: 1.3rem;
+}
+
+.full-screen {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+}
+
+.half-screen {
+    height: 50%;
+    width: 100%;
+    position: relative;
+}
+
+.center {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center_inner {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.bg-primary {
+    background: var(--primary);
+}
+
+.bg-secondary {
+    background: var(--secondary);
+}
+
+.bg-tertiary {
+    background: var(--tertiary);
+}
+
+.bg-light {
+    background: var(--light);
+}
+
+.bg-dark {
+    background: var(--dark);
+}
+
+.primary {
+    color: var(--primary);
+}
+
+.secondary {
+    color: var(--secondary);
+}
+
+.tertiary {
+    color: var(--tertiary);
+}
+
+.light {
+    color: var(--light);
+}
+
+.dark {
+    color: var(--dark);
+}
+
+.scroll-notifier {
+    padding: 0.3em;
+    border-radius: 0.3em;
+    color: var(--light);
+    background: var(--dark);
+    position: fixed;
+    left: 1em;
+    bottom: 1em;
+    z-index: 1;
+}
+
+.primary-font {
+    font-style: Verdana;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 16px;
+    /* line-height: 0; */
+    font-family: Verdana, sans-serif;
+}
