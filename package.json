@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node ./script/route/main.js"},
+    "start": "node script/route/main.js"},
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
