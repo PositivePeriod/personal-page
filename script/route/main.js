@@ -18,6 +18,7 @@ router.use('/blog', blogRouter)
 router.use('/develop', developRouter)
 router.use('/game', gameRouter)
 
-router.listen(4000, function () {
-    console.log('Jeuk Hwang Site listening on port 4000!')
+var port = process.env.PORT || 80;
+router.listen(port, function () {
+    console.log('Jeuk Hwang Site listening on port!')
 });
