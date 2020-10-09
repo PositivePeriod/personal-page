@@ -7,18 +7,20 @@
 }
 
 .English {
-    font-style: Impact;
+    font-style: 'Sansita Swashed';
+
     font-variant: normal;
     font-weight: normal;
     font-size: 30px;
     font-family: Impact, sans-serif;
+    font-family: 'Sansita Swashed', cursive;
 }
 
 .Korean {
     font-style: 'Black Han Sans';
     font-variant: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: 28px;
     font-family: 'Black Han Sans', sans-serif;
     font-family: 'Jua', sans-serif;
 }
@@ -100,7 +102,7 @@ th {
 
 .center {
     position: relative;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -109,7 +111,7 @@ th {
     width: 100%;
     text-align: center;
     margin: 0 auto;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .bg {

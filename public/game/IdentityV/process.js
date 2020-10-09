@@ -1,3 +1,4 @@
+const string_meari = ["60 + 0", "185 + 9", "305 + 15", "690 + 33", "2025 + 98", "3330 + 168", "6590 + 328"];
 const menu_meari = [60, 194, 320, 723, 2123, 3498, 6918];
 const menu_price = [1200, 3900, 5900, 14000, 39000, 65000, 119000];
 const l = menu_meari.length;
@@ -12,8 +13,18 @@ const trans_string = {
     'Korean': ['제5인격 메아리 계산기', '얼마나 필요하신가요?', '계산하기', '메아리', '가격', '수량']
 };
 const trans_function = {
-    'English': function(meari, n, cost) {return `Total ${meari} Echoes (+${meari-n}) from ${cost}won;`},
-    'Korean': function(meari, n, cost) {return `${cost}원에 총 ${meari}메아리 (+${meari-n})`}
+    'result': {
+        'English': function (meari, n, cost) {
+            return `Total ${meari} Echoes (+${meari-n}) for ${cost}won;`
+        },
+        'Korean': function (meari, n, cost) {
+            return `${cost}원에 총 ${meari} 메아리 (+${meari-n})`
+        }
+    },
+    'invalid': {
+        'English': 'Please enter the natural number',
+        'Korean': '자연수를 입력해 주세요'
+    }
 };
 
 function optimize(n) {
@@ -46,17 +57,17 @@ function optimize(n) {
 function process() {
     var value = document.getElementById('input').value
     var n = parseInt(value)
-    if (!(isNaN(n) || n < 0 || n !== parseFloat(value))) {
+    if (!isNaN(n) && n >= 0 && n === parseFloat(value)) {
         var [comb, cost, meari] = optimize(n);
         [memo_meari, memo_n, memo_cost] = [meari, n, cost];
-        document.getElementById('result').innerHTML = `Total ${meari} (+${meari-n}) from ${cost} won`;
+        document.getElementById('result').innerHTML = trans_function['result'][trans_language](meari, n, cost);
         var table = document.getElementById('table')
         var rows = table.rows;
-        for (var i = 0; i < rows.length; i++) {
+        for (var i = 0; i < rows.length - 1; i++) {
             rows[i + 1].cells[2].innerHTML = comb[i];
         }
     } else {
-        alert('Please enter the natural number :)');
+        alert(trans_function['invalid'][trans_language]);
     }
 }
 
@@ -73,7 +84,9 @@ function translate(from, to) {
     var input = document.getElementById('input');
     input.className = `center_inner ${to}`;
     input.setAttribute('placeholder', to_string[from_string.indexOf(input.getAttribute('placeholder'))]);
-    document.getElementById('result').innerHTML = trans_function[to](memo_meari, memo_n, memo_cost);
+    if (!(memo_meari === null || memo_n === null || memo_cost)) {
+        document.getElementById('result').innerHTML = trans_function['result'][to](memo_meari, memo_n, memo_cost);
+    }
 }
 
 window.onload = () => {
@@ -83,7 +96,7 @@ window.onload = () => {
         for (let j = 0; j < 3; j++) {
             let cell = row.insertCell(j);
             if (j == 0) {
-                cell.innerHTML = menu_meari[i];
+                cell.innerHTML = string_meari[i];
             } else if (j == 1) {
                 cell.innerHTML = menu_price[i];
             } else {
