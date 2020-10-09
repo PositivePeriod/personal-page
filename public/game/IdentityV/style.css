@@ -1,0 +1,124 @@
+* {
+    /*user-select: none;*/
+    /* line-height: 0; */
+    outline: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.English {
+    font-style: Impact;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: Impact, sans-serif;
+}
+
+.Korean {
+    font-style: 'Black Han Sans';
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-family: 'Jua', sans-serif;
+}
+
+:root {
+    --primary-color: rgb(243, 135, 135);
+    --secondary-color: rgb(95, 216, 160);
+    --light: rgb(207, 207, 207);
+    --shade: rgb(126, 126, 126);
+    --dark: rgb(26, 26, 26);
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    font-size: 50%;
+}
+
+select {
+    margin: auto;
+    position: relative;
+    text-align: center;
+}
+
+input,
+button {
+    border-radius: .5em;
+    border: 0;
+
+    color: var(--dark);
+    background-color: var(--light);
+    transition: 0.5s;
+    transform: scale(1, 1);
+}
+
+input::placeholder {
+    color: var(--shade);
+}
+
+input:hover,
+button:hover {
+    transition: 0.5s;
+    color: var(--light);
+    background-color: var(--dark);
+    transform: scale(1.1, 1.1);
+}
+
+table {
+    width: 100%
+}
+
+th,
+td {
+    border-bottom: 1px solid #444444;
+    padding: 0.3em;
+}
+
+th {
+    background-color: var(--light);
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.center {
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.center_inner {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--primary-color), var(--secondary-color));
+}
+
+.highlight {
+    color: var(--primary-color)
+}

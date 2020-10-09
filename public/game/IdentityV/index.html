@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title class="string">Identity V Echoes calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script type="text/javascript" src="process.js"></script>
+    <canvas class="bg"></canvas>
+    <div class="content full-screen English" id="content">
+        <div class="center">
+            <div class="center_inner">
+                <h4 class="string">Identity V Echoes calculator</h4>
+                <input type="number" class="center_inner English" id="input" autofocus
+                    placeholder='How much do you need?' onkeypress="if(event.keyCode == 13){process()}">
+                <button class="center_inner English string" id="submit" onclick="process()">Calculate</button>
+            </div>
+        </div>
+        <div class="center">
+            <div class="center_inner" id='result'></div>
+            <div class="center_inner">
+                <table id='table'>
+                    <tr>
+                        <th class="string">Echoes</th>
+                        <th class="string">Cost</th>
+                        <th class="string">Amount</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <footer>
+            Language: <select selected="en" id="language">
+                <option value="en">English</option>
+                <option value="ko">Korean</option>
+            </select>
+            <br>© 2020 PositivePeriod / Contact : positiveperiod.dev@gmail.com
+        </footer>
+    </div>
+</body>
+
+</html>
