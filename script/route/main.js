@@ -17,8 +17,8 @@ router.use('/hub', express.static(path.join(__dirname, '../../public/hub/home'))
 router.use('/blog', blogRouter)
 router.use('/develop', developRouter)
 router.use('/game', gameRouter)
+router.use('/', express.static(path.join(__dirname, '../../public')));
 
-var port = process.env.PORT || 80;
-router.listen(port, function () {
-    console.log('Jeuk Hwang Site listening on port!')
+router.listen(4000, function () {
+    console.log('Jeuk Hwang Site listening on port 4000!')
 });
