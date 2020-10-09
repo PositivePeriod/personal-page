@@ -15,7 +15,7 @@ const trans_string = {
 const trans_function = {
     'result': {
         'English': function (meari, n, cost) {
-            return `Total ${meari} Echoes (+${meari-n}) for ${cost}won;`
+            return `Total ${meari} Echoes (+${meari-n}) for ${cost}won`
         },
         'Korean': function (meari, n, cost) {
             return `${cost}원에 총 ${meari} 메아리 (+${meari-n})`
