@@ -11,7 +11,7 @@
 
     font-variant: normal;
     font-weight: normal;
-    font-size: 30px;
+    font-size: min(5vw, 30px);
     font-family: Impact, sans-serif;
     font-family: 'Sansita Swashed', cursive;
 }
@@ -20,7 +20,7 @@
     font-style: 'Black Han Sans';
     font-variant: normal;
     font-weight: normal;
-    font-size: 28px;
+    font-size: min(5vw, 28px);
     font-family: 'Black Han Sans', sans-serif;
     font-family: 'Jua', sans-serif;
 }
@@ -102,7 +102,7 @@ th {
 
 .center {
     position: relative;
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -111,7 +111,7 @@ th {
     width: 100%;
     text-align: center;
     margin: 0 auto;
-    margin-top: 2%;
+    margin-top: 1.5%;
 }
 
 .bg {
