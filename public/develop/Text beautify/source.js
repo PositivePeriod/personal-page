@@ -24,14 +24,17 @@ function beautify(content) {
     const month_abbr = ['Jan', 'Feb', 'Mar', 'Apr', 'Aug', 'Sep', 'Sept', 'Oct', 'Nov', 'Dec'];
     const single_period_abbr = [...daily_single_abbr, ...case_insensitive_abbr, ...case_insensitive_abbr.map(x => x.toLowerCase()), ...time_unit_abbr, ...day_abbr, ...month_abbr];
     single_period_abbr.forEach(word => {
-        content = content.replace(`/${word}\.\n/g`, `${word}\.`);
+        content = content.replace(/${word}\.[ ]*\n/g, `${word}\. `);
     });
+    console.log(content);
+    content = content.replace(/etc\.[ ]*\n/g, `etc\. `);
+    console.log(content);
 
     const daily_multiple_abbr = ['a.m.', 'A.M.', 'p.m.', 'P.M.', 'A.D.', 'B.C.', 'B.C.E.', 'C.E.', 'Q.E.D.', 'Ph.D.', 'P.E.', 'p.p.', 'P.P.'];
     const location_abbr = ['U.N.', 'U.S.A.', 'U.S.', 'L.A.', 'U.K.', 'N.Z.'];
     const multiple_period_abbr = [...daily_multiple_abbr, ...location_abbr];
     multiple_period_abbr.forEach(word => {
-        content = content.replace(`/${word}\n/g`, `${word}`);
+        content = content.replace(/${word}[ ]*\n/g, `${word} `);
     });
 
     // Ex) Fig.1.2, Mr.Steven, pp. 58 - 70
@@ -90,6 +93,10 @@ function check() {
 }
 window.onload = () => {
     // Textarea changing height
+
+    document.getElementById('input').setAttribute('placeholder', 'Paste (Ctrl+V) your text.\nPress Shift+Enter for new line');
+    document.getElementById('output').setAttribute('placeholder', 'Press the button or Enter.\nCopy (Ctrl+C) your text.');
+
     document.getElementById('input').addEventListener('input', adjustHeights);
     window.addEventListener("resize", adjustHeights, false);
 

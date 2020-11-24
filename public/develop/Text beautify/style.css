@@ -51,7 +51,7 @@ body {
     color: rgb(0, 0, 0);
     width: calc(100% - 10px);
     height: auto;
-    min-height: 60px;
+    min-height: 200px;
     resize: none;
     border: 0;
     padding: 10px;
