@@ -17,7 +17,7 @@ function beautify(content) {
 
     // except some cases like Fig.1.1. about dot
     //  Ex) Fig.1.2, Mr.Steven, pp. 58 - 70
-    const daily_single_abbr = ['Fig', 'ft', 'lb', 'lbs', 'Mr', 'Mrs', 'Ms', 'Jr', 'Eq', 'Eqs', 'pp', 'Vol', 'Pt', 'Dr', 'Dept', 'par', 'Mt', 'govt', 'Bros', 'Oxf'];
+    const daily_single_abbr = ['Fig', 'ft', 'lb', 'lbs', 'Mr', 'Mrs', 'Ms', 'Jr', 'Eq', 'Eqs', 'pp', 'Vol', 'Pt', 'Dr', 'Dept', 'par', 'Mt', 'etc', 'Bros', 'Oxf'];
     const case_insensitive_abbr = ['Tel', 'Govt', 'Inc', 'No'];
     const time_unit_abbr = ['sec', 'min', 'hr', 'wk', 'mo', 'yr'];
     const day_abbr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
