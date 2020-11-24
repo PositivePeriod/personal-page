@@ -30,6 +30,17 @@ body {
     text-align: center;
 }
 
+.left {
+    text-align: left;
+}
+
+
+.flex {
+    display: flex;
+    flex: auto;
+    justify-content: space-around;
+}
+
 .content {
     text-align: center;
     width: 80%;
@@ -37,20 +48,27 @@ body {
 }
 
 .standard-textarea {
-    height: auto;
     color: rgb(0, 0, 0);
-    width: 100%;
+    width: calc(100% - 10px);
     height: auto;
-    min-height: 50%;
+    min-height: 60px;
     resize: none;
     border: 0;
-    padding: 1.5em;
+    padding: 10px;
     background: rgb(255, 255, 255);
     font-size: 1.2em;
 }
 
 .standard-textarea::placeholder {
     color: #757575;
+}
+
+#input {
+    background: rgb(255, 255, 255);
+}
+
+#output {
+    background: rgb(221, 221, 221);
 }
 
 button {
@@ -84,6 +102,7 @@ button:active {
     width: 100%;
     overflow: hidden;
     resize: both;
-    min-height: 40px;
+    min-height: 20px;
     line-height: 20px;
+    height: 20px;
 }
