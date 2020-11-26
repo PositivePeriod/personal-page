@@ -1,3 +1,21 @@
+let removeToast;
+
+function toast(string, state) {
+    const toast = document.getElementById("toast");
+    toast.classList.contains("reveal")
+    ? (clearTimeout(removeToast), removeToast = setTimeout(()=> {document.getElementById("toast").classList.remove("reveal")}, 1000))
+    : removeToast = setTimeout(()=>{document.getElementById("toast").classList.remove("reveal")}, 1000)
+    toast.innerText = string;
+    var color = "rgb(50, 50, 50)"
+    if (state=="success") {
+        color = "rgb(60, 195, 163)";
+    } else if (state=="failure") {
+        color = "rgb(217, 85, 59)";
+    }
+    toast.style.background = color;
+    toast.classList.add("reveal");
+}
+
 function beautify(content) {
     // 1. Get content
     content = content.replace(/\s/g, ' ');
@@ -26,9 +44,6 @@ function beautify(content) {
     single_period_abbr.forEach(word => {
         content = content.replace(/${word}\.[ ]*\n/g, `${word}\. `);
     });
-    console.log(content);
-    content = content.replace(/etc\.[ ]*\n/g, `etc\. `);
-    console.log(content);
 
     const daily_multiple_abbr = ['a.m.', 'A.M.', 'p.m.', 'P.M.', 'A.D.', 'B.C.', 'B.C.E.', 'C.E.', 'Q.E.D.', 'Ph.D.', 'P.E.', 'p.p.', 'P.P.'];
     const location_abbr = ['U.N.', 'U.S.A.', 'U.S.', 'L.A.', 'U.K.', 'N.Z.'];
@@ -83,18 +98,26 @@ function check() {
     var content = document.getElementById('input').value;
     var output = document.getElementById('output');
     output.value = beautify(content);
-    output.select();
+    // output.select();
     adjustHeights();
-    window.scroll({
-        top: 0, 
-        left: 0, 
-        behavior: 'smooth'
-      });
+    //window.scroll({top: 0, left: 0, behavior: 'smooth'});
 }
+
+function search(trans) {
+    var text = document.getElementById('output').value;
+    var userLang = (navigator.language || navigator.userLanguage).substr(0, 2);
+    var googleUrl = `https://translate.google.com/#view=home&op=translate&sl=auto&tl=${userLang}&text=${text}`;
+    var papagoUrl = `https://papago.naver.com/?sk=auto&tk=${userLang}&st=${text}`;
+    if (trans=='google') {
+        window.open(googleUrl);
+    } else if (trans=='papago') {
+        window.open(papagoUrl);
+    };
+}
+
 window.onload = () => {
     // Textarea changing height
-
-    document.getElementById('input').setAttribute('placeholder', 'Paste (Ctrl+V) your text.\nPress Shift+Enter for new line');
+    document.getElementById('input').setAttribute('placeholder', 'Paste (Ctrl+V) your text.\nPress Shift+Enter for new line.');
     document.getElementById('output').setAttribute('placeholder', 'Press the button or Enter.\nCopy (Ctrl+C) your text.');
 
     document.getElementById('input').addEventListener('input', adjustHeights);
@@ -111,5 +134,23 @@ window.onload = () => {
     });
 
     // Check with button
-    document.getElementById('btn').onclick = check;
-};
+    document.getElementById('beautify').onclick = check;
+
+    var clipIn = new ClipboardJS(document.getElementById('copy-input'));
+    clipIn.on('success', function(e) {
+        document.getSelection().removeAllRanges();
+        toast('Copy Before Success', 'success');
+    });
+    clipIn.on('error', function(e) {
+        toast('Copy Before Failure', 'failure');
+    });
+
+    var clipOut = new ClipboardJS(document.getElementById('copy-output'));
+    clipOut.on('success', function(e) {
+        document.getSelection().removeAllRanges();
+        toast('Copy After Success', 'success');
+    });
+    clipOut.on('error', function(e) {
+        toast('Copy After Failure', 'failure');
+    });
+}

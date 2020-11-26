@@ -13,26 +13,31 @@
 <body>
     <div class="centered content">
         <div class="centered text">
-            <h1>Text Beautify</h1>
-            <h3>Beta</h3>
+            <h1>Text Beautify v1.1</h1>
+            <div id="toast"></div>
         </div>
         <div class='flex'>
             <div class='content'>
                 <h3 class="left text">Before</h3>
-                <textarea class='standard-textarea' id='input' autofocus></textarea>
+                <textarea id='input' autofocus></textarea>
+                <button id='copy-input' data-clipboard-action="copy" data-clipboard-target="#input">Copy</button>
+                <button id='beautify'>Beautify</button>
             </div>
             <div class='content'>
                 <h3 class="left text">After</h3>
-                <textarea class='standard-textarea' id='output' readonly></textarea>
+                <textarea id='output' readonly></textarea>
+                <button id='copy-output' data-clipboard-action="copy" data-clipboard-target="#output">Copy</button>
+                <button id='google' onclick="search('google')">Google</button>
+                <button id='papago' onclick="search('papago')">Papago</button>
             </div>
         </div>
-        <button id='btn'>Beautify</button>
         <div class="centered text">
-            <h4>Made by Jeuk Hwang</h4>
+            <h4>Copyright (c) Jeuk Hwang 2020</h4>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
     <script type="text/javascript" src="source.js"></script>
+
 </body>
 
 </html>
