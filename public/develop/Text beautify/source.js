@@ -101,18 +101,34 @@ function check() {
     // output.select();
     adjustHeights();
     //window.scroll({top: 0, left: 0, behavior: 'smooth'});
+    toast('Beautify Success', 'success');
 }
 
 function search(trans) {
     var text = document.getElementById('output').value;
     var userLang = (navigator.language || navigator.userLanguage).substr(0, 2);
-    var googleUrl = `https://translate.google.com/#view=home&op=translate&sl=auto&tl=${userLang}&text=${text}`;
-    var papagoUrl = `https://papago.naver.com/?sk=auto&tk=${userLang}&st=${text}`;
     if (trans=='google') {
+        text = encodeURIComponent(text);
+        text = text.replace(/%22/g, '"');
+        text = text.replace(/%3C/g, '<');
+        text = text.replace(/%3E/g, '>');
+        text = text.replace(/'/g, '%27');
+        var googleUrl = `http://translate.google.com/?sl=auto&tl=${userLang}&text=${text}`;
         window.open(googleUrl);
+        console.log(googleUrl);
     } else if (trans=='papago') {
+        text = encodeURIComponent(text);
+        text = text.replace(/%26/g, '%25amp'); // *
+        text = text.replace(/%22/g, '%25quot'); // "
+        text = text.replace(/'/g, '%25%2339');
+        text = text.replace(/%3C/g, '%25lt'); // <
+        text = text.replace(/%3E/g, '%25gt'); // >
+        text = text.replace(/%2F/g, '%25%23x2F'); // /
+        var papagoUrl = `https://papago.naver.com/?sk=auto&tk=${userLang}&st=${text}`;
         window.open(papagoUrl);
+        console.log(papagoUrl);
     };
+    
 }
 
 window.onload = () => {

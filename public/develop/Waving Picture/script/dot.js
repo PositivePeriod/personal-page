@@ -31,7 +31,11 @@ export class Dot {
         const accel = (this.targetRadius - this.radius) / 2;
         this.radiusV += accel;
         this.radiusV *= BOUNCE;
+        // if (Math.abs(this.radiusV) < 1e-10) {
+        //     this.radiusV = 0;
+        // };
         this.radius += this.radiusV;
+        // this.radius = Math.min(0, this.radius);
 
         ctx.beginPath();
         ctx.fillStyle = `rgb(${this.red}, ${this.green}, ${this.blue})`;
